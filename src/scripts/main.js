@@ -1,3 +1,36 @@
 'use strict';
+const employeesContainer = document.querySelector('ul');
+const employeesAll = employeesContainer.querySelectorAll('li');
 
-// write code here
+function sortList(list) {
+  console.log(' employeesContainer', employeesContainer);
+  const arr = [...list].sort((a, b) => {
+    return (
+      replaceToNumber(b.dataset.salary) - replaceToNumber(a.dataset.salary)
+    );
+  });
+
+  employeesContainer.innerHTML = '';
+
+  arr.forEach((node) => {
+    employeesContainer.innerHTML += node.outerHTML;
+  });
+}
+
+sortList(employeesAll);
+
+function getEmployees(list) {
+  const arr = [...list].map((item) => ({
+    name: item.innerHTML.trim(),
+    position: item.dataset.position,
+    salary: item.dataset.salary,
+    age: item.dataset.age,
+  }));
+  return arr;
+}
+
+getEmployees(employeesAll);
+
+function replaceToNumber(string) {
+  return Number(string.replace(/[^0-9.,-]/g, '').replace(',', ''));
+}
