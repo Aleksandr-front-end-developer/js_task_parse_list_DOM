@@ -1,9 +1,9 @@
 'use strict';
+
 const employeesContainer = document.querySelector('ul');
 const employeesAll = employeesContainer.querySelectorAll('li');
 
 function sortList(list) {
-  console.log(' employeesContainer', employeesContainer);
   const arr = [...list].sort((a, b) => {
     return (
       replaceToNumber(b.dataset.salary) - replaceToNumber(a.dataset.salary)
@@ -26,6 +26,7 @@ function getEmployees(list) {
     salary: item.dataset.salary,
     age: item.dataset.age,
   }));
+
   return arr;
 }
 
