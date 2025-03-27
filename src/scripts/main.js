@@ -10,10 +10,8 @@ function sortList(list) {
     );
   });
 
-  employeesContainer.innerHTML = '';
-
   arr.forEach((node) => {
-    employeesContainer.innerHTML += node.outerHTML;
+    employeesContainer.appendChild(node);
   });
 }
 
